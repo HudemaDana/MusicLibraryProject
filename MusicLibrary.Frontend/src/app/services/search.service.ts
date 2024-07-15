@@ -12,6 +12,6 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   search(query: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?q=${query}`);
+    return this.http.get<any[]>(`${this.apiUrl}/autocomplete?q=${query}`);
   }
 }

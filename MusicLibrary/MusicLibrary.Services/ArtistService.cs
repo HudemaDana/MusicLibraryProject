@@ -39,5 +39,11 @@ namespace MusicLibrary.Services
         {
             await _artistRepository.Delete(id);
         }
+
+        public async Task<IEnumerable<Artist>> SearchArtistsAsync(string query)
+        {
+            var artists = await _artistRepository.GetAll();
+            return artists.Where(a => a.Name.Contains(query, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

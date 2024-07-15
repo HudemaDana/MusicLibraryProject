@@ -9,5 +9,7 @@ namespace MusicLibrary.Services.Interfaces
         Task Create(Artist artist);
         Task Update(Artist artist);
         Task Delete(int id);
+
+        Task<IEnumerable<Artist>> SearchArtistsAsync(string query);
     }
 }
