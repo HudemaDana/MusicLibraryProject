@@ -3,6 +3,7 @@ using MusicLibrary.DataAccess.Data;
 using MusicLibrary.DataAccess.Repositories;
 using MusicLibrary.DataAccess.Repositories.Interfaces;
 using MusicLibrary.Services;
+using MusicLibrary.Services.Extension;
 using MusicLibrary.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,10 @@ builder.Services.AddScoped<ISongRepository, SongRepository>();
 builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddScoped<IAlbumService, AlbumService>();
 builder.Services.AddScoped<ISongService, SongService>();
+
+builder.Services.AddScoped<IJsonImportService, JsonImportService>();
+
+builder.Services.AddHostedService<JsonImportHostedService>();
 
 builder.Services.AddControllers();
 
