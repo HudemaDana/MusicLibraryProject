@@ -20,6 +20,10 @@ export class AlbumService {
     return this.http.get<Album>(`${this.apiUrl}/${id}`);
   }
 
+  getAlbumsByArtist(artistId: number): Observable<Album[]> {
+    return this.http.get<Album[]>(`${this.apiUrl}?artistId=${artistId}`);
+  }
+
   createAlbum(album: Album): Observable<Album> {
     return this.http.post<Album>(this.apiUrl, album);
   }
