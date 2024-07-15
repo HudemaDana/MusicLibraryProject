@@ -34,8 +34,13 @@ namespace MusicLibrary.DataAccess.Repositories
 
         public async Task Update(Artist artist)
         {
-            _dbContext.Entry(artist).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            var existingArtist = _dbContext.Artists.FirstOrDefault(a => a.Id == artist.Id);
+            if (existingArtist != null)
+            {
+                existingArtist.Name = artist.Name;
+                existingArtist.Albums = artist.Albums;
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
         public async Task Delete(int id)
